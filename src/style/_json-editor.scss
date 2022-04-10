@@ -1,0 +1,14 @@
+.json-editor .full-screen,
+.jsoneditor-poweredBy {
+  display: none;
+}
+@import "tree-view";
+.jsoneditor {
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  .jsoneditor-menu {
+    background-color: rgb(var(--c-3));
+    border-bottom: 1px solid rgb(var(--c-3));
+  }
+  border: 1px solid rgb(var(--c-3));
+}

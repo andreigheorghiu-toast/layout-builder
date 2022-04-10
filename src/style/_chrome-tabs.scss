@@ -1,0 +1,60 @@
+.chrome-tabs.chrome-tabs {
+  border-radius: 0;
+  background-color: rgba(var(--c-2), 0.21);
+  .dark-mode & {
+    background-color: rgba(var(--c-4), 0.2);
+    .chrome-tab-title {
+      color: rgb(var(--alt-color));
+    }
+  }
+  padding-bottom: 0;
+  .chrome-tabs-content {
+    display: flex;
+    align-items: flex-end;
+  }
+  .chrome-tab-background {
+    top: auto !important;
+    bottom: -2px;
+  }
+  .chrome-tab-drag-handle {
+    cursor: pointer;
+  }
+  .chrome-tab-title {
+    padding-top: 2px;
+    font-weight: bold;
+  }
+  .chrome-tab {
+    .chrome-tab-background > svg .chrome-tab-geometry {
+      fill: transparent;
+    }
+    &:hover {
+      .chrome-tab-background > svg .chrome-tab-geometry {
+        fill: rgb(var(--c-5));
+      }
+    }
+    &[active] {
+      .chrome-tab-drag-handle {
+        cursor: move;
+      }
+      .preview & {
+        .chrome-tab-background > svg .chrome-tab-geometry {
+          fill: var(--alt-color);
+          .dark-mode & {
+            fill: rgb(var(--c-2));
+          }
+        }
+        .chrome-tab-title {
+          color: var(--text-color);
+        }
+      }
+      .editor & {
+        .chrome-tab-background > svg .chrome-tab-geometry {
+          fill: rgb(var(--c-3));
+        }
+        .chrome-tab-title {
+          color: var(--alt-color);
+        }
+      }
+    }
+  }
+}

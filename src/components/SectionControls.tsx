@@ -1,0 +1,64 @@
+import { builder } from "@/store";
+import { ChangeEvent, useEffect, useState } from "react";
+import { reaction } from "mobx";
+import { titleCase } from "@/util";
+import GridResizerDropdown from "@/components/GridResizerDropdown";
+import { omit } from "lodash-es";
+type ContainerInputType = "width" | "height";
+const useContainerSize = (prop: ContainerInputType) => {
+  const storeKey = `container${titleCase(prop)}` as
+    | "containerWidth"
+    | "containerHeight";
+  const [value, setValue] = useState(builder[storeKey]);
+  useEffect(
+    reaction(() => builder[storeKey], setValue),
+    []
+  );
+  return {
+    type: "number",
+    name: prop,
+    key: prop,
+    value,
+    onInput: (e: ChangeEvent<HTMLInputElement>): void => {
+      builder[storeKey] = +e.target.value;
+    },
+  };
+};
+
+const SectionControls = () => {
+  const containerInputs = [
+    useContainerSize("width"),
+    useContainerSize("height"),
+  ];
+  const addComponent = () => {
+    builder.addComponent();
+  };
+  const resetInterval = () => {
+    const section = builder.section;
+    if (section) {
+      builder.replaceSection(section.id, {
+        ...section,
+        grid: omit(section.grid, [builder.activeSectionInterval]),
+        components: section.components.map((c) => ({
+          ...c,
+          grid: omit(c.grid, [builder.activeSectionInterval]),
+        })),
+      });
+    }
+  };
+  return (
+    <div className="section-editor">
+      {containerInputs.map((input) => (
+        <input {...input} />
+      ))}
+      <GridResizerDropdown />
+      <button style={{ marginLeft: "1rem" }} onClick={addComponent}>
+        Add component
+      </button>
+      <button style={{ marginLeft: "1rem" }} onClick={resetInterval}>
+        Reset interval
+      </button>
+    </div>
+  );
+};
+export default SectionControls;

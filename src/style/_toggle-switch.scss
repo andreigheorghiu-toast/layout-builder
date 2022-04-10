@@ -1,0 +1,29 @@
+.toggle-switch {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  border: 1px solid rgb(var(--c-3));
+  border-radius: 6px;
+  > * {
+    padding: 0.5rem 0;
+    flex: 1 0 auto;
+    text-align: center;
+    font-variant: all-small-caps;
+    cursor: pointer;
+    font-weight: bold;
+    border-right: 1px solid rgba(var(--c-2), 0.42);
+    &:last-child {
+      border-right: none;
+    }
+    &:hover {
+      color: rgb(var(--c-3));
+      background-color: rgba(var(--c-2), 0.05);
+    }
+    &.active {
+      background-color: rgb(var(--c-3));
+      color: white;
+      font-weight: normal;
+    }
+  }
+}

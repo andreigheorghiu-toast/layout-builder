@@ -1,0 +1,43 @@
+.widget.tree-view {
+  .w-body {
+    > div {
+      padding: 0;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      .jsoneditor {
+        flex-grow: 1;
+        background-color: white;
+        border: none;
+      }
+    }
+    padding: 0;
+    .jsoneditor-modes,
+    .full-screen {
+      display: none;
+    }
+    .jsoneditor-search {
+      top: 2px;
+      right: 2px;
+    }
+    .jsoneditor-frame {
+      height: calc(2rem - 1px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .jsoneditor-tree-inner {
+      @include make-scrollable;
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(var(--c-3), 0.21);
+      }
+      &:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(var(--c-3), 0.85);
+      }
+      max-height: calc(100vh - 16rem);
+      min-height: calc(100vh - 16rem);
+      border-bottom: 1px solid rgb(var(--c-5));
+      overflow: auto;
+    }
+  }
+}

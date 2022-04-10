@@ -1,0 +1,115 @@
+.track-wrapper {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  padding: 0;
+  pointer-events: none;
+  background-color: transparent;
+  position: relative;
+  + .track-wrapper {
+    grid-column: 3/4;
+  }
+  &.open-track {
+    pointer-events: all;
+  }
+  .widget-controls {
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -1.5rem;
+    height: 2.7rem;
+    z-index: 3;
+    width: 3rem;
+    border-radius: 1.5rem;
+    transition: opacity 0.3s ease 0.3s,
+      width 0.3s cubic-bezier(0.5, 0, 0.3, 1) 0.3s;
+    background-color: rgba(var(--c-3), 0.85);
+    color: rgba(var(--c-1), 0.65);
+    opacity: 0;
+    box-shadow: var(--raised-shadow);
+    left: 50%;
+    transform: translateX(-50%);
+    .generic-icon {
+      cursor: pointer;
+      width: 2.7rem;
+      height: 2.7rem;
+      padding: 0.5rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.42);
+      &:first-child {
+        border-radius: 1.5rem 0 0 1.5rem;
+      }
+      &:last-child {
+        border-right: none;
+        border-radius: 0 1.5rem 1.5rem 0;
+      }
+      &:hover {
+        color: white;
+        background-color: rgb(var(--c-3));
+      }
+    }
+  }
+  &:hover .widget-controls {
+    opacity: 1;
+    width: calc(8.1rem + 2px);
+    transition: opacity 0.3s ease, width 0.3s cubic-bezier(0.5, 0, 0.3, 1);
+  }
+}
+.widget-track {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  .w-track {
+    @include make-scrollable;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgba(var(--c-1), 0.12);
+    border-right: 1px solid rgb(var(--c-1));
+    .dark-mode & {
+      border-right-color: rgba(var(--c-1), 0.17);
+    }
+    backdrop-filter: blur(7px);
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.5, 0, 0.3, 1);
+    .list-group {
+      min-height: 100%;
+      margin-right: -5px;
+      padding: 0.5rem 0 4.2rem;
+    }
+    .list-move,
+    .list-enter-active,
+    .list-leave-active {
+      transition: all 0.3s cubic-bezier(0.5, 0, 0.3, 1);
+    }
+
+    .list-enter-from,
+    .list-leave-to {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+
+    .list-leave-active {
+      position: absolute;
+      width: 100%;
+    }
+    .sortable-ghost {
+      background-color: rgba(var(--c-1), 0.35) !important;
+      border: 1px solid rgb(var(--c-1));
+      border-radius: 6px;
+      margin: 0 0.5rem;
+      > * {
+        opacity: 0;
+      }
+    }
+  }
+  .open-track & .w-track {
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,49 @@
+.flex {
+  display: flex;
+}
+.grid-resizer {
+  display: grid;
+  padding: 2px;
+  grid-template-areas: "- top" "left body";
+  .scale-h,
+  .scale-v,
+  .the-grid div {
+    display: flex;
+    div {
+      width: var(--cell-size);
+      height: var(--cell-size);
+      border: solid #eee;
+      border-width: 1px 0 0 1px;
+    }
+  }
+  .the-grid {
+    grid-area: body;
+  }
+  .current-size,
+  .new-size {
+    position: absolute;
+    display: inline-block;
+    pointer-events: none;
+  }
+  .current-size {
+    border: 2px solid rgb(23, 162, 184);
+    background-color: rgba(23, 162, 184, 0.05);
+  }
+  .scale-h,
+  .scale-v {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      letter-spacing: -1px;
+    }
+  }
+  .scale-h {
+    grid-area: top;
+  }
+  .scale-v {
+    grid-area: left;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,30 @@
+.report-editor:not(#_) {
+  padding: 0;
+  background-color: rgba(var(--c-1), 1);
+  .dark-mode & {
+    background-color: rgba(var(--c-2), 1);
+  }
+  display: flex;
+  flex-direction: column;
+  .tab-panel {
+    flex-grow: 1;
+    padding: 1.5rem;
+    &.editor {
+      padding: 0;
+    }
+  }
+  .container {
+    height: 100%;
+  }
+  .chrome-tab-close {
+    display: none;
+  }
+  .vue3-tabs-chrome {
+    .tabs-item.active:first-child {
+      color: white;
+      .tabs-background .tabs-background-content {
+        background-color: rgb(var(--c-3));
+      }
+    }
+  }
+}
