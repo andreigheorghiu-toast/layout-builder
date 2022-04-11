@@ -22,6 +22,7 @@ module.exports = {
     "simple-import-sort/exports": "error",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["warn"],
+    "no-duplicate-imports": ["warn"],
   },
   settings: {
     react: {

@@ -1,7 +1,6 @@
 import { pick } from "lodash-es";
 import { reaction } from "mobx";
-import { CSSProperties, useCallback, useEffect } from "react";
-import { useRef, useState } from "react";
+import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 
 import ResizeHandle from "@/components/ResizeHandle";
 import SectionControls from "@/components/SectionControls";
