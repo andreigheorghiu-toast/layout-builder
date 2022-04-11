@@ -1,3 +1,6 @@
+import { isEqual } from "lodash-es";
+import { reaction } from "mobx";
+import { observer } from "mobx-react";
 import {
   CSSProperties,
   DragEventHandler,
@@ -6,12 +9,10 @@ import {
   useRef,
   useState,
 } from "react";
+
+import ComponentResizer from "@/components/ComponentResizer";
 import { Builder, Layout } from "@/store";
 import { MEvent } from "@/types";
-import { isEqual } from "lodash-es";
-import ComponentResizer from "@/components/ComponentResizer";
-import { reaction } from "mobx";
-import { observer } from "mobx-react";
 
 interface Props {
   builder: Builder;
@@ -209,10 +210,10 @@ const SectionPreview = observer(({ builder, layout }: Props) => {
       {builder.sectionComponentsIds.map((componentId) => (
         <ComponentResizer
           {...{
-            key: componentId,
             componentId,
             container: container.current,
           }}
+          key={componentId}
         />
       ))}
     </div>

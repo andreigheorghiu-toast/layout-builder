@@ -1,7 +1,8 @@
-import { builder } from "@/store";
-import { useEffect, useState } from "react";
-import { reaction } from "mobx";
 import { isEqual } from "lodash-es";
+import { reaction } from "mobx";
+import { useEffect, useState } from "react";
+
+import { builder } from "@/store";
 
 const Logger = () => {
   const [value, setValue] = useState({
@@ -12,7 +13,7 @@ const Logger = () => {
     () =>
       reaction(
         () => [builder.section, builder.availableScreenSizes],
-        (val) =>
+        () =>
           setValue({
             dash: builder.dashboard,
             sizes: builder.availableScreenSizes,

@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
-import { JsonEditor as Editor } from "jsoneditor-react";
-import { builder, layout } from "@/store";
-import DashboardPreview from "@/components/DashboardPreview";
-import { useChromeTabs } from "@sinm/react-chrome-tabs";
 import "@sinm/react-chrome-tabs/css/chrome-tabs.css";
-import { autorun, reaction, values } from "mobx";
+
+import { useChromeTabs } from "@sinm/react-chrome-tabs";
 import JSONEditor from "jsoneditor";
+import { JsonEditor as Editor } from "jsoneditor-react";
 import { isEqual } from "lodash-es";
+import { autorun, reaction, values } from "mobx";
+import { useEffect, useState } from "react";
+
+import DashboardPreview from "@/components/DashboardPreview";
+import { builder, layout } from "@/store";
 import { useJsonEditor } from "@/util";
 const DashboardBuilder = () => {
   const [className, setClassName] = useState("report-editor");

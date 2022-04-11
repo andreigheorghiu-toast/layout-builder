@@ -1,5 +1,6 @@
-import { layout } from "@/store";
 import { useEffect, useState } from "react";
+
+import { layout } from "@/store";
 const EmptyPage = () => {
   const [className, setClassName] = useState("empty-page");
   useEffect(() => {

@@ -1,7 +1,9 @@
-import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Map from "react-map-gl";
+
+import mapboxgl from "mapbox-gl";
 import { observer } from "mobx-react";
+import Map from "react-map-gl";
+
 import { Layout } from "@/store";
 
 mapboxgl.accessToken =

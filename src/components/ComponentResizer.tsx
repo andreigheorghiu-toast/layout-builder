@@ -1,11 +1,12 @@
-import { MEvent, Section } from "@/types";
-import { CSSProperties, useCallback, useEffect, useState } from "react";
-import { reaction, toJS } from "mobx";
-import { builder } from "@/store";
-import { prevent, preventStop, stop } from "@/util";
 import { omit } from "lodash-es";
-import GenericIcon from "@/components/GenericIcon";
+import { reaction, toJS } from "mobx";
+import { CSSProperties, useCallback, useEffect, useState } from "react";
+
 import { XIcon } from "@/components/async";
+import GenericIcon from "@/components/GenericIcon";
+import { builder } from "@/store";
+import { MEvent, Section } from "@/types";
+import { prevent, preventStop, stop } from "@/util";
 
 interface Props {
   componentId: string;

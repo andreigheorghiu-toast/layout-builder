@@ -6,16 +6,16 @@ React + TS on Vite
 
 ### Concept: Layout builder
 
-Loose project for getting used to React.   
+Loose project for getting used to React.  
 Main purpose: achieving a set of defined UX features using React (e.g: dynamic components, state management, understanding re-rendering and hooks in React, etc...)
+
 - the main reason I'm making this public is because I welcome any feedback (anti-patterns, etc...)
 
 (self imposed) requirements:
 
- - the project should be an empty skeleton, loading dynamically any modules and their widgets, from `/config` folder
-   (achieved via `/components/async`)
- - the project advances an opinionated layout design, grid based, best described by the following terms
-
+- the project should be an empty skeleton, loading dynamically any modules and their widgets, from `/config` folder
+  (achieved via `/components/async`)
+- the project advances an opinionated layout design, grid based, best described by the following terms
 
 **MODULE**
 : a pluggable sub-system
@@ -83,6 +83,9 @@ Main purpose: achieving a set of defined UX features using React (e.g: dynamic c
 - data config should be key-ed, to allow children to override parts of the parent data configuration, via deep merging.
 
 ---
+
 ---
+
 ###Notes:
+
 - I haven't written any tests for it. I might, when I get some time for it.

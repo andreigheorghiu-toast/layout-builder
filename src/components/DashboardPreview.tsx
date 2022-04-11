@@ -1,11 +1,18 @@
-import { builder, layout } from "@/store";
-import React, { CSSProperties, useCallback, useEffect } from "react";
-import ResizeHandle from "@/components/ResizeHandle";
-import { useRef, useState } from "react";
-import SectionControls from "@/components/SectionControls";
-import SectionPreview from "@/components/SectionPreview";
 import { pick } from "lodash-es";
 import { reaction } from "mobx";
+import { CSSProperties, useCallback, useEffect } from "react";
+import { useRef, useState } from "react";
+
+import ResizeHandle from "@/components/ResizeHandle";
+import SectionControls from "@/components/SectionControls";
+import SectionPreview from "@/components/SectionPreview";
+import { builder, layout } from "@/store";
+import { MEvent } from "@/types";
+
+interface ResizeHandleProps {
+  side: string;
+  onMouseDown: (e: MEvent, side: string) => void;
+}
 const DashboardPreview = () => {
   const container = useRef<HTMLDivElement>(null);
   const [startPosition, setStartPosition] = useState({
@@ -25,24 +32,18 @@ const DashboardPreview = () => {
   const onMouseUp = useCallback(() => {
     setIsResizing(false);
   }, [containerHeight, containerWidth, isResizing]);
-  const onMouseDown = useCallback(
-    (e: MouseEvent | React.MouseEvent, side: string) => {
-      if (container.current instanceof HTMLDivElement) {
-        setStartPosition({
-          ...pick(e, ["clientX", "clientY"]),
-          side,
-          ...pick(container.current.getBoundingClientRect(), [
-            "width",
-            "height",
-          ]),
-        });
-        setIsResizing(true);
-      }
-    },
-    []
-  );
+  const onMouseDown = useCallback((e: MEvent, side: string) => {
+    if (container.current instanceof HTMLDivElement) {
+      setStartPosition({
+        ...pick(e, ["clientX", "clientY"]),
+        side,
+        ...pick(container.current.getBoundingClientRect(), ["width", "height"]),
+      });
+      setIsResizing(true);
+    }
+  }, []);
   const onMouseMove = useCallback(
-    (e: MouseEvent | React.MouseEvent): void => {
+    (e: MEvent): void => {
       if (isResizing) {
         if (container.current instanceof HTMLDivElement) {
           if (startPosition.side === "bottom") {
@@ -109,9 +110,9 @@ const DashboardPreview = () => {
         style={containerStyle}
       >
         {["left", "right", "bottom"]
-          .map((side) => ({ side, onMouseDown, key: side }))
-          .map((props) => (
-            <ResizeHandle {...props} />
+          .map((side) => ({ side, onMouseDown }))
+          .map((props: ResizeHandleProps) => (
+            <ResizeHandle {...props} key={props.side} />
           ))}
         <SectionPreview builder={builder} layout={layout} />
       </div>

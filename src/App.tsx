@@ -1,11 +1,13 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./style/App.scss";
-import { routes } from "@/config/routes";
-import React, { Suspense, useEffect } from "react";
-import { builder, layout } from "@/store";
+
+import { Suspense, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import { TheMap, TheNavbar, TheTopbar } from "@/components/async";
 import WidgetTrack from "@/components/WidgetTrack";
-import { TheNavbar, TheTopbar, TheMap } from "@/components/async";
-import {usePageSwitch} from "@/util";
+import { routes } from "@/config/routes";
+import { builder, layout } from "@/store";
+import { usePageSwitch } from "@/util";
 
 const App = () => {
   const layoutComponents = [

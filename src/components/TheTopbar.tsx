@@ -1,7 +1,8 @@
 import { observer } from "mobx-react";
-import { layout, Layout } from "@/store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { Layout, layout } from "@/store";
 interface Props {
   layout: Layout;
 }

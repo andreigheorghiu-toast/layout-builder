@@ -1,8 +1,9 @@
-import { CellPayload } from "@/types";
-import GenericIcon from "@/components/GenericIcon";
-import { PencilIcon, XIcon } from "@/components/async";
-import { builder } from "@/store";
 import { omit } from "lodash-es";
+
+import { PencilIcon, XIcon } from "@/components/async";
+import GenericIcon from "@/components/GenericIcon";
+import { builder } from "@/store";
+import { CellPayload } from "@/types";
 
 const RowActions = ({ gridIndex, gridKey, section }: Partial<CellPayload>) => {
   const removeGridInterval = ({

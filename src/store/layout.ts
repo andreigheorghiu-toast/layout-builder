@@ -1,8 +1,7 @@
-import { ILayoutModule, PageSize, TrackSide, Widget } from "@/types";
+import { makeAutoObservable, reaction } from "mobx";
+
 import { modules } from "@/config";
-import { autorun, makeAutoObservable, reaction } from "mobx";
-import { matchPath, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { ILayoutModule, PageSize, TrackSide, Widget } from "@/types";
 
 interface LayoutInterface {
   modules: ILayoutModule[];
@@ -71,13 +70,16 @@ export class Layout implements LayoutInterface {
   }
 
   get makePageClassName(): (id?: string) => string {
-    return (id = '') => [id, "page-container"].concat(
-        this.pageSize === "L"
+    return (id = "") =>
+      [id, "page-container"]
+        .concat(
+          this.pageSize === "L"
             ? ["page-wide"]
             : this.pageSize === "S"
-                ? ["page-narrow"]
-                : []
-    ).join(' ');
+            ? ["page-narrow"]
+            : []
+        )
+        .join(" ");
   }
 
   addWidget(widget: Widget, side: TrackSide = "left") {

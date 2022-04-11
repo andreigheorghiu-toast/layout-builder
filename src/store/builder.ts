@@ -1,3 +1,8 @@
+import { defaults, defaultsDeep, get, map, pick, times } from "lodash-es";
+import { makeAutoObservable } from "mobx";
+import { CSSProperties } from "react";
+import { v4 } from "uuid";
+
 import {
   ComponentPosition,
   Dashboard,
@@ -8,10 +13,6 @@ import {
   SectionComponent,
 } from "@/types";
 import { minMax, screenSizes } from "@/util";
-import { v4 } from "uuid";
-import { defaults, defaultsDeep, get, map, pick, times } from "lodash-es";
-import { makeAutoObservable } from "mobx";
-import { CSSProperties } from "react";
 
 interface BuilderInterface {
   dashboard: Dashboard;
@@ -21,7 +22,7 @@ interface BuilderInterface {
   draggedComponentId: string;
   indicatorStyle: CSSProperties;
   isResizing: boolean;
-  dragStart: { x: number; y: number; c: GridSizePosition; };
+  dragStart: { x: number; y: number; c: GridSizePosition };
   section?: Section;
   sectionComponents: SectionComponent[];
   sectionComponentsIds: string[];
@@ -75,10 +76,10 @@ export class Builder implements BuilderInterface {
 
   get section(): Section | undefined {
     return this.activeSectionId
-        ? (this.dashboard.sections || []).find(
-        (s: Section) => s.id === this.activeSectionId
-    )
-        : undefined;
+      ? (this.dashboard.sections || []).find(
+          (s: Section) => s.id === this.activeSectionId
+        )
+      : undefined;
   }
 
   get sectionComponents(): SectionComponent[] {
@@ -90,26 +91,26 @@ export class Builder implements BuilderInterface {
 
   get gridSize(): GridSize {
     return (
-        this.section?.grid[this.gridSourceInterval] || {
-          h: this.sectionComponents.length || 1,
-          w: 1,
-        }
+      this.section?.grid[this.gridSourceInterval] || {
+        h: this.sectionComponents.length || 1,
+        w: 1,
+      }
     );
   }
 
   get availableScreenSizes(): ScreenSizeType[] {
     return [...screenSizes.filter((i) => i.from < this.containerWidth)]
-        .map((s) => s.id)
-        .reverse();
+      .map((s) => s.id)
+      .reverse();
   }
 
   get currentScreenSize(): ScreenSizeType {
     return (
-        screenSizes.find(
-            (interval) =>
-                interval.from < this.containerWidth &&
-                interval.to >= this.containerWidth
-        )?.id || "xs"
+      screenSizes.find(
+        (interval) =>
+          interval.from < this.containerWidth &&
+          interval.to >= this.containerWidth
+      )?.id || "xs"
     );
   }
 
@@ -123,13 +124,13 @@ export class Builder implements BuilderInterface {
 
   get gridSourceInterval(): ScreenSizeType {
     return this.section
-        ? this.availableScreenSizes.find(
-        (size: ScreenSizeType) =>
+      ? this.availableScreenSizes.find(
+          (size: ScreenSizeType) =>
             this.sectionComponents.some(
-                (c: SectionComponent) => c.grid[size]
+              (c: SectionComponent) => c.grid[size]
             ) || this.section?.grid[size]
-    ) || "xs"
-        : "xs";
+        ) || "xs"
+      : "xs";
   }
 
   get cellMap(): { x: number; y: number }[] {

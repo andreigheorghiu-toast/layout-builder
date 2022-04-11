@@ -1,12 +1,12 @@
 import {
   DocumentIcon,
+  HomeIcon,
+  /*LocationMarkerIcon,*/
+  Logger,
   PageSizeSwitch,
   ResponsivenessSwitch,
   SectionBuilder,
   TreeView,
-  Logger,
-  LocationMarkerIcon,
-  HomeIcon,
 } from "@/components/async";
 import { ILayoutModule } from "@/types";
 

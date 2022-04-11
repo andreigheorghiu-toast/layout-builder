@@ -1,7 +1,8 @@
-import { screenSizes } from "@/util";
-import { Builder } from "@/store";
-import ReactSlider from "react-slider";
 import { observer } from "mobx-react";
+import ReactSlider from "react-slider";
+
+import { Builder } from "@/store";
+import { screenSizes } from "@/util";
 interface Props {
   builder: Builder;
 }
@@ -15,7 +16,9 @@ const ResponsivenessSwitch = observer(({ builder }: Props) => {
         {screenSizes.map((interval) => (
           <div
             key={interval.id}
-            className={interval.id === builder.currentScreenSize ? "active" : ""}
+            className={
+              interval.id === builder.currentScreenSize ? "active" : ""
+            }
             onClick={() => setContainerWidth(interval.to)}
           >
             {interval.id}

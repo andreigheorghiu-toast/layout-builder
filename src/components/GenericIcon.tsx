@@ -1,4 +1,6 @@
+import { omit } from "lodash-es";
 import { LazyExoticComponent, Suspense } from "react";
+
 import { MEvent } from "@/types";
 
 interface Props {
@@ -9,9 +11,8 @@ interface Props {
 
 const GenericIcon = (props: Props) => {
   const className = [props.className || "", "generic-icon"].join(" ");
-  const { icon, ...rest } = props;
   return (
-    <div {...rest} className={className}>
+    <div {...omit(props, ["icon"])} className={className}>
       <Suspense fallback={<>...</>}>
         <props.icon />
       </Suspense>

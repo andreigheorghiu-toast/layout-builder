@@ -1,11 +1,12 @@
-import React, { useState, Suspense, useEffect } from "react";
-import { Builder, Layout } from "@/store";
-import GenericIcon from "@/components/GenericIcon";
-import { ArrowsExpandIcon, SelectorIcon, XIcon } from "@/components/async";
-import { Collapse } from "react-collapse";
 import { pick } from "lodash-es";
-import { prevent, stop } from "@/util";
+import { Suspense, useEffect, useState } from "react";
+import { Collapse } from "react-collapse";
+
+import { ArrowsExpandIcon, SelectorIcon, XIcon } from "@/components/async";
+import GenericIcon from "@/components/GenericIcon";
+import { Builder, Layout } from "@/store";
 import { MEvent } from "@/types";
+import { prevent, stop } from "@/util";
 
 interface Props {
   widgetId: string;

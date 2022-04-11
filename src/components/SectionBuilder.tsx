@@ -1,10 +1,11 @@
-import { builder } from "@/store";
-import { getItemTitle } from "@/util";
-import { reaction } from "mobx";
-import { CellPayload, ScreenSizeType, TableField } from "@/types";
-import { useEffect, useState } from "react";
 import { isEqual } from "lodash-es";
+import { reaction } from "mobx";
+import { useEffect, useState } from "react";
+
 import RowActions from "@/components/RowActions";
+import { builder } from "@/store";
+import { CellPayload, ScreenSizeType, TableField } from "@/types";
+import { getItemTitle } from "@/util";
 
 const SectionBuilder = () => {
   const fields: TableField[] = [

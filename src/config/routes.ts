@@ -1,5 +1,5 @@
-import { RoutePage } from "@/types";
 import { DashboardBuilder, EmptyPage } from "@/components/async";
+import { RoutePage } from "@/types";
 export const routes: RoutePage[] = [
   {
     path: "/",

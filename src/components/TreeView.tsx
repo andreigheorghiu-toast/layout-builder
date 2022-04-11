@@ -1,9 +1,10 @@
-import { JsonEditor as Editor } from "jsoneditor-react";
 import JSONEditor from "jsoneditor";
-import { useEffect, useState } from "react";
+import { JsonEditor as Editor } from "jsoneditor-react";
 import { isEqual } from "lodash-es";
-import { builder } from "@/store";
 import { reaction } from "mobx";
+import { useEffect, useState } from "react";
+
+import { builder } from "@/store";
 import { useJsonEditor } from "@/util";
 
 const TreeView = () => {

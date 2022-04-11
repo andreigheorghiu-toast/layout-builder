@@ -1,6 +1,6 @@
 import { camelCase, startCase } from "lodash-es";
+
 import { MEvent, PageSizeInterval, ScreenSize } from "@/types";
-import React from "react";
 
 export const titleCase = (s: string) => startCase(camelCase(s));
 
@@ -90,21 +90,17 @@ export function patchScrollBlockingListeners(): void {
   }
 }
 
-export const prevent = (
-  e: React.MouseEvent | MouseEvent
-): React.MouseEvent | MouseEvent => {
+export const prevent = (e: MEvent): MEvent => {
   e.preventDefault();
   return e;
 };
 
-export const stop = (
-  e: React.MouseEvent | MouseEvent
-): React.MouseEvent | MouseEvent => {
+export const stop = (e: MEvent): MEvent => {
   e.stopPropagation();
   return e;
 };
 
 export const preventStop = (e: MEvent) => prevent(stop(e));
 
-export * from './usePageSizeSwitch'
-export * from './useJsonEditor'
+export * from "./useJsonEditor";
+export * from "./usePageSizeSwitch";

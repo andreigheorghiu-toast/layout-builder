@@ -1,11 +1,12 @@
-import { Popover, ArrowContainer } from "react-tiny-popover";
-import { ChangeEvent, CSSProperties, useEffect, useState } from "react";
-import { builder } from "@/store";
-import CellScale from "@/components/CellScale";
-import { reaction } from "mobx";
 import { times } from "lodash-es";
-import {ChevronDownIcon} from "@/components/async";
+import { reaction } from "mobx";
+import { ChangeEvent, CSSProperties, useEffect, useState } from "react";
+import { ArrowContainer, Popover } from "react-tiny-popover";
+
+import { ChevronDownIcon } from "@/components/async";
+import CellScale from "@/components/CellScale";
 import GenericIcon from "@/components/GenericIcon";
+import { builder } from "@/store";
 
 const GridResizerDropdown = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -140,10 +141,11 @@ const GridResizerDropdown = () => {
         </ArrowContainer>
       )}
     >
-      <div onClick={() => setIsPopoverOpen(!isPopoverOpen)} className="grid-resizer">
-        <code style={{ marginLeft: "1rem" }}>
-          grid
-        </code>
+      <div
+        onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+        className="grid-resizer"
+      >
+        <code style={{ marginLeft: "1rem" }}>grid</code>
         <GenericIcon icon={ChevronDownIcon} />
         <input
           value={builder.gridSize.w}

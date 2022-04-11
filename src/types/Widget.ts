@@ -1,7 +1,8 @@
+import { LazyExoticComponent } from "react";
+
+import { layout } from "@/store";
 import { ILayoutModule, IWidget } from "@/types";
 import { getItemTitle, titleCase } from "@/util";
-import { LazyExoticComponent } from "react";
-import { layout } from "@/store";
 
 export class Widget implements IWidget {
   component?: LazyExoticComponent<any>;

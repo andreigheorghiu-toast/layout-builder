@@ -1,6 +1,7 @@
+import { observer } from "mobx-react";
+
 import GenericIcon from "@/components/GenericIcon";
 import { Layout, layout } from "@/store";
-import { observer } from "mobx-react";
 import { getItemTitle } from "@/util";
 interface Props {
   layout: Layout;

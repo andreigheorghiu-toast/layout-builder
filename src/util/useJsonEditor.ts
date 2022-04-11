@@ -1,8 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
 import JSONEditor from "jsoneditor";
-import { Dashboard } from "@/types";
 import { isEqual } from "lodash-es";
+import { Dispatch, SetStateAction } from "react";
+
 import { builder } from "@/store";
+import { Dashboard } from "@/types";
 
 export const useJsonEditor = ({
   setEditor,

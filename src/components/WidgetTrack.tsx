@@ -1,12 +1,13 @@
-import { observer } from "mobx-react";
-import { Builder, Layout } from "@/store";
-import { CursorClickIcon, SelectorIcon, XIcon } from "@/components/async";
-import { TrackSide } from "@/types";
-import { ReactSortable } from "react-sortablejs";
-import { useEffect, useRef } from "react";
-import WidgetBox from "@/components/WidgetBox";
-import GenericIcon from "@/components/GenericIcon";
 import gsap from "gsap";
+import { observer } from "mobx-react";
+import { useEffect, useRef } from "react";
+import { ReactSortable } from "react-sortablejs";
+
+import { CursorClickIcon, SelectorIcon, XIcon } from "@/components/async";
+import GenericIcon from "@/components/GenericIcon";
+import WidgetBox from "@/components/WidgetBox";
+import { Builder, Layout } from "@/store";
+import { TrackSide } from "@/types";
 interface Props {
   layout: Layout;
   builder: Builder;
