@@ -11,10 +11,7 @@ const useContainerSize = (prop: ContainerInputType) => {
     | "containerWidth"
     | "containerHeight";
   const [value, setValue] = useState(builder[storeKey]);
-  useEffect(
-    reaction(() => builder[storeKey], setValue),
-    []
-  );
+  useEffect(() => reaction(() => builder[storeKey], setValue), []);
   return {
     type: "number",
     name: prop,
