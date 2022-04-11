@@ -1,6 +1,6 @@
 import "./style/App.scss";
 
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { TheMap, TheNavbar, TheTopbar } from "@/components/async";
@@ -26,9 +26,6 @@ const App = () => {
     usePageSwitch();
     return <></>;
   };
-  useEffect(() => {
-    layout.activeModuleId = layout.modules[0].id;
-  }, []);
   return (
     <div className="App">
       {layout.modules.find((m) => m.id === "map") ? (

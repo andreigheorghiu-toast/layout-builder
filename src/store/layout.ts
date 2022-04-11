@@ -3,33 +3,13 @@ import { makeAutoObservable, reaction } from "mobx";
 import { modules } from "@/config";
 import { ILayoutModule, PageSize, TrackSide, Widget } from "@/types";
 
-interface LayoutInterface {
-  modules: ILayoutModule[];
-  activeModuleId: string;
-  activeModule?: ILayoutModule;
-  isLeftTrackOpen: boolean;
-  isRightTrackOpen: boolean;
-  darkMode: boolean;
-  allWidgets: Widget[];
-  visibleWidgets: Widget[];
-  makePageClassName(id?: string): string;
-  activeWidget: string;
-  getsFocus: string;
-  isDragging: boolean;
-  tracks: Record<TrackSide, string[]>;
-  pageSize: PageSize;
-  addWidget(widget: Widget, side: TrackSide): void;
-  updateWidget(widget: Widget): void;
-  removeWidget(id: string): void;
-}
-
-export class Layout implements LayoutInterface {
+export class Layout {
+  location = "";
   modules = modules;
   activeModuleId = "";
   isLeftTrackOpen = true;
   darkMode = false;
   allWidgets = [] as Widget[];
-  visibleWidgets = [] as Widget[];
   tracks: Record<TrackSide, string[]> = {
     left: [],
     right: [],

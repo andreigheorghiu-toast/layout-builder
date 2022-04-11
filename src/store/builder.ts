@@ -7,47 +7,11 @@ import {
   ComponentPosition,
   Dashboard,
   GridSize,
-  GridSizePosition,
   ScreenSizeType,
   Section,
   SectionComponent,
 } from "@/types";
 import { minMax, screenSizes } from "@/util";
-
-interface BuilderInterface {
-  dashboard: Dashboard;
-  containerWidth: number;
-  containerHeight: number;
-  activeSectionId: string;
-  draggedComponentId: string;
-  indicatorStyle: CSSProperties;
-  isResizing: boolean;
-  dragStart: { x: number; y: number; c: GridSizePosition };
-  section?: Section;
-  sectionComponents: SectionComponent[];
-  sectionComponentsIds: string[];
-  gridSize: GridSize;
-  availableScreenSizes: ScreenSizeType[];
-  currentScreenSize: ScreenSizeType;
-  activeSectionInterval: ScreenSizeType;
-  gridSourceInterval: ScreenSizeType;
-  cellMap: { x: number; y: number }[];
-  componentStyle(id: string): CSSProperties;
-  componentsGridMap: ComponentPosition[];
-  dashboardClassName: string;
-  isComponentFixed(id: string): boolean;
-  componentClassName(id: string): string;
-  boxes: ComponentPosition[];
-  getComponentCells(id: string): ComponentPosition[];
-  getComponentCell(id: string): ComponentPosition;
-  addSection(data: Partial<Section>): void;
-  updateSection(id: string, update: Partial<Section>): void;
-  replaceSection(id: string, section: Section): void;
-  removeSection(id: string): void;
-  addComponent(data: Partial<SectionComponent>): void;
-  updateComponent(id: string, update: Partial<SectionComponent>): void;
-  startResize(id: string): void;
-}
 
 const dragReset = {
   x: 1,
@@ -60,7 +24,7 @@ const dragReset = {
   },
 };
 
-export class Builder implements BuilderInterface {
+export class Builder {
   dashboard: Dashboard = { sections: [] };
   containerWidth = 1920;
   containerHeight = 0;

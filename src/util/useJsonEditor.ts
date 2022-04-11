@@ -1,5 +1,6 @@
 import JSONEditor from "jsoneditor";
 import { isEqual } from "lodash-es";
+import { toJS } from "mobx";
 import { Dispatch, SetStateAction } from "react";
 
 import { builder } from "@/store";
@@ -13,7 +14,7 @@ export const useJsonEditor = ({
   props: Record<string, unknown>;
 }) => {
   const handleEditorChange = (val: Dashboard) => {
-    if (!isEqual(val, builder.dashboard)) {
+    if (!isEqual(val, toJS(builder.dashboard))) {
       builder.dashboard = val;
     }
   };
