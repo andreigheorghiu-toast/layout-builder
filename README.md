@@ -16,6 +16,7 @@ Main purpose: achieving a set of defined UX features using React (e.g: dynamic c
 - the project should be an empty skeleton, loading dynamically any modules and their widgets, from `/config` folder
   (achieved via `/components/async`)
 - the project advances an opinionated layout design, grid based, best described by the following terms
+- the initial idea was to create a drag & drop template builder which would get saved as json 
 
 **MODULE**
 : a pluggable sub-system
@@ -24,7 +25,8 @@ Main purpose: achieving a set of defined UX features using React (e.g: dynamic c
 - upon selection, a module pushes 0 or more widgets to the widgets track. If any of the widgets already exist, they should not be re-added (this can be changed, on a case-by-case basis)
 - upon selection, a module should have the ability to focus/make active a particular widget (e.g: scroll to it)
 - ideally an app should function without any module (so no module should be assumed as always available)
-
+- modules are also associated with pages. When loading the app, I'm activating the first module associated with current pathname. 
+- I've also added a mapbox map (now commented, in `config/modules`). the challenge was not to re-instantiate the map when navigating to another page - keep the map's state (zoom level, pitch, coordinates, etc...). The main idea would be to allow transparent/empty pages to be loaded on top of the map, which would, in fact, activate/load modules/widgets on the widget track, providing the user with various tools for interacting with the displayed data. I've previously toyed with this concept for a covid tracker prototype app, started when covid broke out, but I never finished it.
 ---
 
 **WIDGET**
